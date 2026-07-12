@@ -4,7 +4,19 @@ const noBtn = document.getElementById("noBtn");
 const firstPage = document.getElementById("firstPage");
 const secondPage = document.getElementById("secondPage");
 
-const music = document.getElementById("music");
+const music1 = document.getElementById("music1");
+const music2= document.getElementById("music2");
+// لما الأولى تخلص شغل التانية
+music1.addEventListener("ended", function () {
+    music2.currentTime = 0;
+    music2.play();
+});
+
+// لما التانية تخلص ارجع للأولى
+music2.addEventListener("ended", function () {
+    music1.currentTime = 0;
+    music1.play();
+});
 const heartRain = document.getElementById("heartRain");
 
 firstPage.style.display = "none";
@@ -41,7 +53,7 @@ noBtn.addEventListener("click", function(e) {
 
 yesBtn.addEventListener("click", function () {
 
-    music.play();
+    music1.play();
 
     createHeartRain();
 
@@ -53,6 +65,7 @@ yesBtn.addEventListener("click", function () {
 
         firstPage.style.display = "none";
          document.body.style.background = "url('background.jpeg')";
+        //  document.body.style.background = "url('background2.jpeg')";
           document.body.style.backgroundSize = "cover";
          document.body.style.backgroundPosition = "center";
          document.body.style.backgroundRepeat = "no-repeat";
